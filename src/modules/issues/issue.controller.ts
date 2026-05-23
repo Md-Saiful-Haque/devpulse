@@ -15,7 +15,7 @@ const createIssue = async (req: Request, res: Response) => {
             message: "Issue created successfully",
             data: result
         })
-    } catch (error: unknown) {
+    } catch (error: any) {
         sendResponse(res, {
             statusCode: 404,
             success: false,
