@@ -12,7 +12,7 @@ const signUp = async (req: Request, res: Response) => {
             message: "User registered successfully",
             data: result
         })
-    } catch (error: any) {
+    } catch (error: unknown) {
         sendResponse(res, {
             statusCode: 404,
             success: false,
@@ -32,7 +32,7 @@ const login = async (req: Request, res: Response) => {
             message: "User login successfully",
             data: user
         })
-    } catch (error: any) {
+    } catch (error: unknown) {
         sendResponse(res, {
             statusCode: 404,
             success: false,

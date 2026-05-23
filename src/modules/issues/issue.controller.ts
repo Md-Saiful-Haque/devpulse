@@ -15,7 +15,7 @@ const createIssue = async (req: Request, res: Response) => {
             message: "Issue created successfully",
             data: result
         })
-    } catch (error: any) {
+    } catch (error: unknown) {
         sendResponse(res, {
             statusCode: 404,
             success: false,
@@ -43,12 +43,14 @@ const getAllIssues = async (
             message: "All issues retrieved successfully",
             data: result
         })
-    } catch (error: any) {
-        sendResponse(res, {
-            statusCode: 400,
-            success: false,
-            message: error.message,
-        })
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            sendResponse(res, {
+                statusCode: 400,
+                success: false,
+                message: error.message,
+            })
+        }
     }
 };
 
@@ -63,12 +65,14 @@ const getSingleIssue = async (req: Request, res: Response) => {
             message: "Single Issue retrieved",
             data: result
         })
-    } catch (error: any) {
-        sendResponse(res, {
-            statusCode: 400,
-            success: false,
-            message: error.message,
-        })
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            sendResponse(res, {
+                statusCode: 400,
+                success: false,
+                message: error.message,
+            })
+        }
     }
 }
 
@@ -86,12 +90,14 @@ const updateIssues = async (req: Request, res: Response) => {
             message: "Issue updated successfully",
             data: result
         })
-    } catch (error: any) {
-        sendResponse(res, {
-            statusCode: 400,
-            success: false,
-            message: error.message,
-        })
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            sendResponse(res, {
+                statusCode: 400,
+                success: false,
+                message: error.message,
+            })
+        }
     }
 }
 
@@ -104,12 +110,14 @@ const deleteIssue = async (req: Request, res: Response) => {
             success: true,
             message: "Issue deleted successfully"
         })
-    } catch (error: any) {
-        sendResponse(res, {
-            statusCode: 400,
-            success: false,
-            message: error.message,
-        })
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            sendResponse(res, {
+                statusCode: 400,
+                success: false,
+                message: error.message,
+            })
+        }
     }
 }
 
