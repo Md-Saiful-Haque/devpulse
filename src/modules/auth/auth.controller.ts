@@ -12,16 +12,38 @@ const signUp = async (req: Request, res: Response) => {
             message: "User registered successfully",
             data: result
         })
-    } catch (error: any) {
+    } catch (error: unknown) {
         sendResponse(res, {
             statusCode: 404,
             success: false,
             message: "User Not Found",
+            error: error
+        })
+    }
+}
+
+const login = async (req: Request, res: Response) => {
+    const user = await authService.loginUser(req.body);
+
+    try {
+        sendResponse(res, {
+            statusCode: 200,
+            success: true,
+            message: "User login successfully",
+            data: user
+        })
+    } catch (error: unknown) {
+        sendResponse(res, {
+            statusCode: 404,
+            success: false,
+            message: "User Not Found",
+            error: error
         })
     }
 }
 
 
 export const authController = {
-    signUp
+    signUp,
+    login
 }
