@@ -95,9 +95,28 @@ const updateIssues = async (req: Request, res: Response) => {
     }
 }
 
+const deleteIssue = async (req: Request, res: Response) => {
+    try {
+        const result = await issueService.deleteIssueService(Number(req.params.id))
+
+        sendResponse(res, {
+            statusCode: 200,
+            success: true,
+            message: "Issue deleted successfully"
+        })
+    } catch (error: any) {
+        sendResponse(res, {
+            statusCode: 400,
+            success: false,
+            message: error.message,
+        })
+    }
+}
+
 export const issuesController = {
     createIssue,
     getAllIssues,
     getSingleIssue,
-    updateIssues
+    updateIssues,
+    deleteIssue
 }
