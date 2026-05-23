@@ -52,9 +52,52 @@ const getAllIssues = async (
     }
 };
 
+const getSingleIssue = async (req: Request, res: Response) => {
 
+    try {
+        const result = await issueService.getSingleIssueService(Number(req.params.id));
+
+        sendResponse(res, {
+            statusCode: 200,
+            success: true,
+            message: "Single Issue retrieved",
+            data: result
+        })
+    } catch (error: any) {
+        sendResponse(res, {
+            statusCode: 400,
+            success: false,
+            message: error.message,
+        })
+    }
+}
+
+const updateIssues = async (req: Request, res: Response) => {
+
+    try {
+        const result = await issueService.updateIssueService(
+            Number(req.params.id),
+            req.body,
+            req.user!)
+
+        sendResponse(res, {
+            statusCode: 200,
+            success: true,
+            message: "Issue updated successfully",
+            data: result
+        })
+    } catch (error: any) {
+        sendResponse(res, {
+            statusCode: 400,
+            success: false,
+            message: error.message,
+        })
+    }
+}
 
 export const issuesController = {
     createIssue,
-    getAllIssues
+    getAllIssues,
+    getSingleIssue,
+    updateIssues
 }
