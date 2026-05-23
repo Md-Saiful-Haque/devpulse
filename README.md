@@ -6,11 +6,11 @@ A collaborative platform for software teams to report bugs, suggest features, an
 
 ## Live URL
 
-https://your-live-url.onrender.com
+https://devpulse-ecru.vercel.app/
 
 ## GitHub Repository
 
-https://github.com/yourusername/devpulse-api
+https://github.com/Md-Saiful-Haque/devpulse.git
 
 ---
 
@@ -266,4 +266,4 @@ src
 
 # Author
 
-Developed as part of the DevPulse Backend Assignment.
+### Md Saiful Haque

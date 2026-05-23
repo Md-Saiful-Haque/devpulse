@@ -12,14 +12,14 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(
   cors({
-    origin: ["https://vercel.app", "http://localhost:3000"],
+    origin: ["https://devpulse-ecru.vercel.app", "http://localhost:3000"],
     credentials: true,
   }),
 );
 
 app.get("/", (req: Request, res: Response) => {
     
-    res.send("I'm Express")
+    res.send("Hello! DevPulse API")
 })
 
 app.use("/api/auth", authRoute)
